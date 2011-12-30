@@ -1,0 +1,8 @@
+---                                                                                                                                 
+title: Welcome to Jin Studio                                                                                                               
+layout: post                                                                                                                        
+---                                                                                                                                 
+                                                                                                                                    
+<h4>This is official blog of JinStudio  </h4>
+
+<h3>__JinStudio, make life easier!__</h3>
