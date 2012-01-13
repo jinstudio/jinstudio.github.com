@@ -145,6 +145,9 @@ a:visited {
 
 div.post {
   margin-bottom: 2em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+  border-radius: 0.5em;
 }
 
 .post h1 {
