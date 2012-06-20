@@ -5,17 +5,17 @@ layout: post
                                                                                                                                     
 There is an simple example showing how to defining and using RMI in Glassfish:
 *1. define interface*
-_<pre><code>public interface Bean30Remote {
+_<pre><code>public interface BeanRemote {
       String getMessage();
       String getAddress(); 
       String getCompanyname();
 }      </code></pre>_
 *2. define stateless bean*
-_<pre><code>@Stateless(mappedName="Bean30")
-@Remote(Bean30Remote.class)
-public class Bean30Bean implements Bean30Remote {
+_<pre><code>@Stateless(mappedName="BeanExample")
+@Remote(BeanRemote.class)
+public class BeanBean implements BeanRemote {
   public String getMessage() {
-  return "Roseindia.net";
+  return "JinStudio.";
   }
   public String getAddress() {
   return "ShangHai,China";
@@ -24,7 +24,7 @@ public class Bean30Bean implements Bean30Remote {
   return "JinStudio.Ltd.";
   }
 }</code></pre>_
-_{color:red}note: can move @Remote annotation from implementation class-*Bean30Bean* to interface *Bean30Remote*_
+_{color:red}note: can move @Remote annotation from implementation class-*BeanBean* to interface *BeanRemote*_
 
 *3. invoke in client*
 _<pre><code>_Properties props = new Properties();
@@ -36,7 +36,7 @@ props.setProperty("org.omg.CORBA.ORBInitialPort", "3900");
 try
 {
     InitialContext ctx = new InitialContext(props);
-    Bean30Remote bean = (Bean30Remote) ctx.lookup("Bean30");
+    BeanRemote bean = (BeanRemote) ctx.lookup("BeanExample");
 }
 catch (NamingException e)
 {
