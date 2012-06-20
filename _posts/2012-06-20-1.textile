@@ -18,10 +18,10 @@ public class Bean30Bean implements Bean30Remote {
   return "Roseindia.net";
   }
   public String getAddress() {
-  return "Sec-3,D-16/116,Rohini";
+  return "ShangHai,China";
   }
   public String getCompanyname() {
-  return "Roseindia.net Pvt.Ltd.";
+  return "JinStudio.Ltd.";
   }
 }</code></pre>_
 _{color:red}note: can move @Remote annotation from implementation class-*Bean30Bean* to interface *Bean30Remote*_
