@@ -1,0 +1,46 @@
+---                                                                                                                                 
+title: how to using RMI in Glassfish                                                                                                               
+layout: post                                                                                                                        
+---                                                                                                                                 
+                                                                                                                                    
+There is an simple example showing how to defining and using RMI in Glassfish:
+# define interface
+_<pre><code> public interface Bean30Remote {
+      String getMessage();
+      String getAddress(); 
+      String getCompanyname();
+}      </code> </pre>_
+# define stateless bean
+_<pre><code>@Stateless(mappedName="Bean30")
+@Remote(Bean30Remote.class)
+public class Bean30Bean implements Bean30Remote {
+  public String getMessage() {
+  return "Roseindia.net";
+  }
+  public String getAddress() {
+  return "Sec-3,D-16/116,Rohini";
+  }
+  public String getCompanyname() {
+  return "Roseindia.net Pvt.Ltd.";
+  }
+} </code></pre>_
+note: also could move @Remote annotation from implementation class-Bean30Bean to interface Bean30Remote
+# invoke in client
+_<pre><code>_Properties props = new Properties();
+props.setProperty("java.naming.factory.initial", "com.sun.enterprise.naming.SerialInitContextFactory");
+props.setProperty("java.naming.factory.url.pkgs", "com.sun.enterprise.naming");
+props.setProperty("java.naming.factory.state", "com.sun.corba.ee.impl.presentation.rmi.JNDIStateFactoryImpl");
+props.setProperty("org.omg.CORBA.ORBInitialHost", "127.0.0.1");
+props.setProperty("org.omg.CORBA.ORBInitialPort", "3900");
+try
+{
+    InitialContext ctx = new InitialContext(props);
+    Bean30Remote bean = (Bean30Remote) ctx.lookup("Bean30");
+}
+catch (NamingException e)
+{
+    //e.printStackTrace();
+}catch(Exception ex)
+{
+    //ex.printStackTrace();
+}</code></pre>_
