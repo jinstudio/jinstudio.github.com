@@ -4,13 +4,13 @@ layout: post
 ---                                                                                                                                 
                                                                                                                                     
 There is an simple example showing how to defining and using RMI in Glassfish:
-# define interface
-_<pre><code> public interface Bean30Remote {
+*1. define interface*
+_<pre><code>public interface Bean30Remote {
       String getMessage();
       String getAddress(); 
       String getCompanyname();
-}      </code> </pre>_
-# define stateless bean
+}      </code></pre>_
+*2. define stateless bean*
 _<pre><code>@Stateless(mappedName="Bean30")
 @Remote(Bean30Remote.class)
 public class Bean30Bean implements Bean30Remote {
@@ -23,9 +23,10 @@ public class Bean30Bean implements Bean30Remote {
   public String getCompanyname() {
   return "Roseindia.net Pvt.Ltd.";
   }
-} </code></pre>_
-note: also could move @Remote annotation from implementation class-Bean30Bean to interface Bean30Remote
-# invoke in client
+}</code></pre>_
+_{color:red}note: can move @Remote annotation from implementation class-*Bean30Bean* to interface *Bean30Remote*_
+
+*3. invoke in client*
 _<pre><code>_Properties props = new Properties();
 props.setProperty("java.naming.factory.initial", "com.sun.enterprise.naming.SerialInitContextFactory");
 props.setProperty("java.naming.factory.url.pkgs", "com.sun.enterprise.naming");
@@ -44,3 +45,4 @@ catch (NamingException e)
 {
     //ex.printStackTrace();
 }</code></pre>_
+
